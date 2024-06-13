@@ -24,7 +24,7 @@ class SensorTest(BaseModel):
     # __abstract__ = "True"
 
     _id: str
-    timestamp: str
+    # timestamp: str
     temperature_in_c: float
     humidity: float
     wifi_rssi: float
