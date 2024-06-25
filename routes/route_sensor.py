@@ -1,8 +1,8 @@
 from bson import ObjectId
 from fastapi import APIRouter
-
+from datetime import datetime 
 from config.db import collection_name
-from models.model_sensor import SensorData, SensorTest
+from models.model_sensor import SensorData
 from schemas.schemas_sensor import (sensorData, sensorEntity, sensorsEntity,
                                     sensorsList)
 
@@ -19,5 +19,7 @@ async def find_all_sensors():
 
 # POST Request Method
 @sensor_route.post("/")
-async def post_sensor_data(item: SensorTest):
+async def post_sensor_data(item: SensorData):
+    sensor_data = item.model_dump()
+    sensor_data["timestamp"] = datetime.now()
     collection_name.insert_one(dict(item))

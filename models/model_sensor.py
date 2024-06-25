@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from pydantic import BaseModel
+from typing import Optional
 
 
 # Define base class to share attributes
@@ -8,16 +9,19 @@ class SensorData(BaseModel):
     # __abstract__ = "True"
 
     sensor_name: str
-    timestamp: str
-    air_temp: str
-    air_hummid: str
-    soi_temp: str
-    soil_hummid: str
-    batt_level: str
-    coordinates: str
+    timestamp: Optional[str]= None
+    air_temp_in_c: Optional[str] = None
+    air_humidity: Optional[str]= None
+    soil_temp_in_c: Optional[str]= None
+    soil_humidity: Optional[str]= None
+    batt_level: Optional[str]= None
+    gsm_rssi: str
+    ipAddress: Optional[str]= None
+    coordinates: Optional[str]= None
 
-    created_at: int = int(datetime.timestamp(datetime.now()))
-    updated_at: int = int(datetime.timestamp(datetime.now()))
+    # Automatically set created at and updated at during data creation
+    created_at: datetime = datetime.now()
+    updated_at: datetime = datetime.now()
 
 
 class SensorTest(BaseModel):

@@ -1,0 +1,7 @@
+CREATE TABLE espSensor (
+	id SERIAL PRIMARY KEY,
+	value1 VARCHAR(10),
+	value2 VARCHAR(10),
+	value3 VARCHAR(10),
+	reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP	
+);

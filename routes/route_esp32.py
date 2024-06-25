@@ -22,6 +22,6 @@ async def post_sensor_data(sensor_reading: SensorTest):
     sensor_data = sensor_reading.model_dump()
 
     # Populate entries in the document
-    sensor_data["tiemstamp"] = datetime.now()
+    sensor_data["timestamp"] = datetime.now()
     # sensor_data["metadata"] = {"sensor_id": sensor_reading.sensor_id}
     collection_name.insert_one(dict(sensor_data))
