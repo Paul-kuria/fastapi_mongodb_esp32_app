@@ -5,9 +5,8 @@ base_url = "https://fastapi-mongodb-esp32-app-2.onrender.com"
 thingspeak = "https://api.thingspeak.com/update"
 
 def post_one_sensor_document():
-    post_url = f"{base_url}/sensors"
-    # surl = "https://fastapi-mongodb-esp32-app-2.onrender.com/sensors"
-    surl = "http://127.0.0.1:8000/data"
+    post_url = f"{base_url}/data"
+    furl = "https://fastapi-mongodb-esp32-app-2.onrender.com/data/"
     document = {
         "air_temp_in_c":"26.012",
         "air_humidity":"55.1",
@@ -17,18 +16,14 @@ def post_one_sensor_document():
         "macAddress": "EB:5F:4G:2A:RZ",
         "ipAddress": "100.128.180.103",
         "sensor_name": "sensor_ttgo1",
-        "batt_level": 4.05,
-        # "coordinates": {
-        #     "lat": -1.3292285,
-        #     "lon": 36.7171183
-        # }
+        "batt_level": "4.05",
+
     }
 
     try:
         res = requests.post(
-            url=surl,
+            url=furl,
             json = document,
-            allow_redirects=True
         )
 
         status_code = res.status_code
